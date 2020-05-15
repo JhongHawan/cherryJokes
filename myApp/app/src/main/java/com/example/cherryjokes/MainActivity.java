@@ -5,6 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,12 +24,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        String[] jokeQuestions = {
+        final String[] jokeQuestions = {
                 "What's the best thing about Switzerland?",
                 "Why do we tell actors to \"break a leg?\"",
                 "How many times can you subtract 10 from 100?"
         };
-        String[] jokeAnswers = {
+        final String[] jokeAnswers = {
                 "I don't know, but the flag is a big plus.",
                 "Because every play has a cast.",
                 "Once. The next time you would be subtracting 10 from 90."
@@ -35,18 +40,27 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // onClick setRandomJoke
+        Button jokeButton = (Button) findViewById(R.id.jokeButton);
+        TextView starter = (TextView)findViewById(R.id.jokeQuestion);
+        starter.setText("Press for a random joke!");
+        jokeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TextView jokeQuestion = (TextView)findViewById(R.id.jokeQuestion);
+                jokeQuestion.setText(setRandomJoke(jokeQuestions));
+            }
+        });
     }
 
     /**
      * TODO: Set the string values to the button in UI.
      * */
-    private void setRandomJoke(String[] jokeQuestions, String[] jokeAnswers) {
+    private String setRandomJoke(String[] jokeQuestions) {
         Random rand = new Random();
         int upperBound = jokes.size();
         int randIndex = rand.nextInt(upperBound);
         String randQuestion = jokeQuestions[randIndex];
-        String randAnswer = jokes.get(jokeQuestions[randIndex]);
-
+        return randQuestion;
     }
 
     private void printJoke(String jokeQuestion, String jokeAnswer) {
