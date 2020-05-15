@@ -21,13 +21,14 @@
         android:id="@+id/jokeQuestion"
         android:layout_width="293dp"
         android:layout_height="58dp"
-        android:text=
         android:textColor="#000000"
         android:textColorHint="#000000"
         android:textSize="18sp"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="@+id/jokeButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/jokeButton"
-        app:layout_constraintVertical_bias="0.887" />
+        app:layout_constraintVertical_bias="0.887"
+        android:textStyle="bold" />
 </androidx.constraintlayout.widget.ConstraintLayout>
